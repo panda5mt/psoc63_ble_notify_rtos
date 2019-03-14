@@ -41,14 +41,14 @@ endif
 all: rtos_ble_mainapp.elf secondary-outputs
 
 dependents:
-	-cd /Users/atsu/mtw/rtos/rtos_ble_mainapp_psoc6pdl/Debug && $(MAKE) all
-	-cd /Users/atsu/mtw/rtos/rtos_ble_mainapp_cm0p/Debug && $(MAKE) all
+	-cd /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_psoc6pdl/Debug && $(MAKE) all
+	-cd /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_cm0p/Debug && $(MAKE) all
 
 # Tool invocations
-rtos_ble_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/atsu/mtw/rtos/rtos_ble_mainapp_psoc6pdl/Debug/librtos_ble_mainapp_psoc6pdl.a /Users/atsu/mtw/rtos/rtos_ble_mainapp_cm0p/Debug/rtos_ble_mainapp_cm0p.elf
+rtos_ble_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_psoc6pdl/Debug/librtos_ble_mainapp_psoc6pdl.a /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_cm0p/Debug/rtos_ble_mainapp_cm0p.elf
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM Cross C Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -Og -ffunction-sections -fdata-sections -Wall  -g3 -T "/Users/atsu/mtw/rtos/rtos_ble_mainapp/cy8c6xx7_cm4_dual.ld" -Xlinker --gc-sections -Wl,-Map,"rtos_ble_mainapp.map" --specs=nano.specs -ffat-lto-objects -g --enable-objc-gc -mfpu=fpv4-sp-d16 -o "rtos_ble_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -Og -ffunction-sections -fdata-sections -Wall  -g3 -T "/Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp/cy8c6xx7_cm4_dual.ld" -Xlinker --gc-sections -Wl,-Map,"rtos_ble_mainapp.map" --specs=nano.specs -ffat-lto-objects -g --enable-objc-gc -mfpu=fpv4-sp-d16 -o "rtos_ble_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -59,13 +59,13 @@ clean:
 	-@echo ' '
 
 post-build:
-	-/Applications/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc --noprofile /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/makefiles/platforms/PSOC6_DUAL_CORE/cymcuelftool_postbuild.bash /Applications/ModusToolbox_1.0/tools/cymcuelftool-1.0/bin/cymcuelftool /Users/atsu/mtw/rtos/rtos_ble_mainapp_cm0p/Release/rtos_ble_mainapp_cm0p.elf /Users/atsu/mtw/rtos/rtos_ble_mainapp/Debug/rtos_ble_mainapp.elf ARM_CM4
+	-/Applications/ModusToolbox_1.0/tools/modus-shell-1.0/bin/bash --norc --noprofile /Applications/ModusToolbox_1.0/libraries/psoc6sw-1.0/makefiles/platforms/PSOC6_DUAL_CORE/cymcuelftool_postbuild.bash /Applications/ModusToolbox_1.0/tools/cymcuelftool-1.0/bin/cymcuelftool /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_cm0p/Debug/rtos_ble_mainapp_cm0p.elf /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp/Debug/rtos_ble_mainapp.elf ARM_CM4
 	-@echo ' '
 
 secondary-outputs:
 
 .PHONY: all clean dependents post-build
-/Users/atsu/mtw/rtos/rtos_ble_mainapp_psoc6pdl/Debug/librtos_ble_mainapp_psoc6pdl.a:
-/Users/atsu/mtw/rtos/rtos_ble_mainapp_cm0p/Debug/rtos_ble_mainapp_cm0p.elf:
+/Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_psoc6pdl/Debug/librtos_ble_mainapp_psoc6pdl.a:
+/Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_cm0p/Debug/rtos_ble_mainapp_cm0p.elf:
 
 -include ../makefile.targets

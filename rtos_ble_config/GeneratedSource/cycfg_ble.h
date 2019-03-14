@@ -2193,7 +2193,9 @@ BLE_CONFIG_START
             <SecurityProperties>
                 <Property id="SecurityMode" value="SecurityMode_1"/>
                 <Property id="SecurityLevel" value="NoSecurity"/>
+                <Property id="SecurityLevelMode2" value="Unauthenticated"/>
                 <Property id="IoCapability" value="Display"/>
+                <Property id="KeypressNotifications" value="No"/>
                 <Property id="Bonding" value="Bond"/>
                 <Property id="EncryptionKeySize" value="16"/>
             </SecurityProperties>
