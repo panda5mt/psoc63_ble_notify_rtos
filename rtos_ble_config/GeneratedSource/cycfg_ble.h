@@ -80,7 +80,7 @@
 
 /** The GATT Maximum attribute length */
 #define CY_BLE_GATT_DB_MAX_VALUE_LEN                (0x001Au)
-#define CY_BLE_GATT_DB_INDEX_COUNT                  (0x002Bu)
+#define CY_BLE_GATT_DB_INDEX_COUNT                  (0x0018u)
 
 /** The number of characteristics supporting the Reliable Write property */
 #define CY_BLE_GATT_RELIABLE_CHAR_COUNT             (0x0000u)
@@ -89,10 +89,10 @@
 #define CY_BLE_GATT_RELIABLE_CHAR_LENGTH            (0x0000u)
 
 /** The size of the cy_ble_attValues array */
-#define CY_BLE_GATT_DB_ATT_VAL_COUNT                (0x7Fu)
+#define CY_BLE_GATT_DB_ATT_VAL_COUNT                (0x59u)
 
 /** The size of the cy_ble_attValuesLen array */
-#define CY_BLE_GATT_DB_ATT_VAL_LEN_COUNT            (0x15u)
+#define CY_BLE_GATT_DB_ATT_VAL_LEN_COUNT            (0x0Cu)
 
 /** GATT Role */
 #define CY_BLE_GATT_ROLE                            (0x01u)
@@ -104,7 +104,7 @@
 #define CY_BLE_GATT_ROLE_CLIENT                     (0u != (CY_BLE_GATT_ROLE & CY_BLE_GATT_CLIENT))
 
 /** Max unique services in the project */
-#define CY_BLE_MAX_SRVI                             (0x02u)
+#define CY_BLE_MAX_SRVI                             (0x01u)
 
 /** The parameter to enable the configuration of the L2CAP logical channels */
 #define CY_BLE_L2CAP_ENABLE                         (0x01u)
@@ -264,10 +264,10 @@
 #define CY_BLE_SECURITY_CONFIGURATION_0_INDEX   (0x00u)
 #define CY_BLE_ADV_PKT_0_INDEX_FLAGS   (0x00u)
 #define CY_BLE_ADV_PKT_0_INDEX_LOCAL_NAME   (0x03u)
-#define CY_BLE_ADV_PKT_0_INDEX_SERVICE_UUID_16   (0x13u)
-#define CY_BLE_ADV_PKT_0_INDEX_SERVICE_SOLICITATION_16   (0x15u)
+#define CY_BLE_ADV_PKT_0_INDEX_SERVICE_UUID_16   (0x14u)
+#define CY_BLE_ADV_PKT_0_INDEX_SERVICE_SOLICITATION_16   (0x16u)
 #define CY_BLE_SCN_PKT_0_INDEX_LOCAL_NAME   (0x00u)
-#define CY_BLE_SCN_PKT_0_INDEX_TX_POWER_LEVEL   (0x10u)
+#define CY_BLE_SCN_PKT_0_INDEX_TX_POWER_LEVEL   (0x11u)
 #define CY_BLE_PERIPHERAL_CONFIGURATION_0_INDEX   (0x00u)
 
 
@@ -277,8 +277,6 @@
 
 #define CY_BLE_CUSTOM
 #define CY_BLE_CUSTOM_SERVER
-#define CY_BLE_DIS
-#define CY_BLE_DIS_SERVER
 
 
 /*******************************************************************************  
@@ -809,9 +807,9 @@ BLE_CONFIG_START
                                         <Field>
                                             <FieldProperties>
                                                 <Property id="Name" value="Name"/>
-                                                <Property id="Value" value="AISEA-BLE-TEST"/>
+                                                <Property id="Value" value="PSOC63-BLE-TEST"/>
                                                 <Property id="Format" value="f_utf8s"/>
-                                                <Property id="ByteLength" value="14"/>
+                                                <Property id="ByteLength" value="15"/>
                                             </FieldProperties>
                                         </Field>
                                     </Fields>
@@ -1414,377 +1412,6 @@ BLE_CONFIG_START
                                 </Characteristic>
                             </Characteristics>
                         </Service>
-                        <Service type="org.bluetooth.service.device_information">
-                            <ServiceProperties>
-                                <Property id="EntityID" value="{fe77d3d5-f38a-4666-b392-2f4f436ac790}"/>
-                                <Property id="Name" value="Device Information"/>
-                                <Property id="DisplayName" value="Device Information"/>
-                                <Property id="UUID" value="180A"/>
-                                <Property id="ServiceDeclaration" value="Primary"/>
-                                <Property id="IncludedServices" value=""/>
-                            </ServiceProperties>
-                            <Characteristics>
-                                <Characteristic type="org.bluetooth.characteristic.manufacturer_name_string">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="Manufacturer Name String"/>
-                                        <Property id="DisplayName" value="Manufacturer Name String"/>
-                                        <Property id="UUID" value="2A29"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Manufacturer Name"/>
-                                                <Property id="Value" value="Aidea Inc."/>
-                                                <Property id="Format" value="f_utf8s"/>
-                                                <Property id="ByteLength" value="10"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                                <Characteristic type="org.bluetooth.characteristic.model_number_string">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="Model Number String"/>
-                                        <Property id="DisplayName" value="Model Number String"/>
-                                        <Property id="UUID" value="2A24"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Model Number"/>
-                                                <Property id="Value" value="KAMOME-AIS01"/>
-                                                <Property id="Format" value="f_utf8s"/>
-                                                <Property id="ByteLength" value="12"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                                <Characteristic type="org.bluetooth.characteristic.serial_number_string">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="Serial Number String"/>
-                                        <Property id="DisplayName" value="Serial Number String"/>
-                                        <Property id="UUID" value="2A25"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Serial Number"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_utf8s"/>
-                                                <Property id="ByteLength" value="1"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                                <Characteristic type="org.bluetooth.characteristic.hardware_revision_string">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="Hardware Revision String"/>
-                                        <Property id="DisplayName" value="Hardware Revision String"/>
-                                        <Property id="UUID" value="2A27"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Hardware Revision"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_utf8s"/>
-                                                <Property id="ByteLength" value="0"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                                <Characteristic type="org.bluetooth.characteristic.firmware_revision_string">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="Firmware Revision String"/>
-                                        <Property id="DisplayName" value="Firmware Revision String"/>
-                                        <Property id="UUID" value="2A26"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Firmware Revision"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_utf8s"/>
-                                                <Property id="ByteLength" value="0"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                                <Characteristic type="org.bluetooth.characteristic.software_revision_string">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="Software Revision String"/>
-                                        <Property id="DisplayName" value="Software Revision String"/>
-                                        <Property id="UUID" value="2A28"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Software Revision"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_utf8s"/>
-                                                <Property id="ByteLength" value="0"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                                <Characteristic type="org.bluetooth.characteristic.system_id">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="System ID"/>
-                                        <Property id="DisplayName" value="System ID"/>
-                                        <Property id="UUID" value="2A23"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Manufacturer Identifier"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_uint40"/>
-                                            </FieldProperties>
-                                        </Field>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Organizationally Unique Identifier"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_uint24"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                                <Characteristic type="org.bluetooth.characteristic.ieee_11073-20601_regulatory_certification_data_list">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="IEEE 11073-20601 Regulatory Certification Data List"/>
-                                        <Property id="DisplayName" value="IEEE 11073-20601 Regulatory Certification Data List"/>
-                                        <Property id="UUID" value="2A2A"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Data"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_reg_cert_data_list"/>
-                                                <Property id="ByteLength" value="1"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                                <Characteristic type="org.bluetooth.characteristic.pnp_id">
-                                    <CharacteristicProperties>
-                                        <Property id="Name" value="PnP ID"/>
-                                        <Property id="DisplayName" value="PnP ID"/>
-                                        <Property id="UUID" value="2A50"/>
-                                    </CharacteristicProperties>
-                                    <Fields>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Vendor ID Source"/>
-                                                <Property id="EnumValue" value="1"/>
-                                                <Property id="Format" value="f_uint8"/>
-                                            </FieldProperties>
-                                        </Field>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Vendor ID"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_uint16"/>
-                                            </FieldProperties>
-                                        </Field>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Product ID"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_uint16"/>
-                                            </FieldProperties>
-                                        </Field>
-                                        <Field>
-                                            <FieldProperties>
-                                                <Property id="Name" value="Product Version"/>
-                                                <Property id="Value" value=""/>
-                                                <Property id="Format" value="f_uint16"/>
-                                            </FieldProperties>
-                                        </Field>
-                                    </Fields>
-                                    <Properties>
-                                        <BleProperty>
-                                            <Property id="PropertyType" value="Read"/>
-                                            <Property id="Present" value="true"/>
-                                            <Property id="Mandatory" value="true"/>
-                                        </BleProperty>
-                                    </Properties>
-                                    <Permission>
-                                        <Property id="AccessPermissionRead" value="true"/>
-                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncRead" value="Default"/>
-                                        <Property id="AccessPermissionWrite" value="false"/>
-                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
-                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
-                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
-                                        <Property id="AutoSyncWrite" value="Default"/>
-                                    </Permission>
-                                    <Descriptors/>
-                                </Characteristic>
-                            </Characteristics>
-                        </Service>
                     </Services>
                 </ProfileRole>
                 <ProfileRole type="Client">
@@ -2120,7 +1747,7 @@ BLE_CONFIG_START
         <General>
             <Property id="DeviceAddress" value="00A050-000022"/>
             <Property id="SiliconGeneratedAddress" value="true"/>
-            <Property id="DeviceName" value="AISEA-BLE-TEST"/>
+            <Property id="DeviceName" value="PSOC63-BLE-TEST"/>
             <Property id="Appearance" value="192"/>
             <Property id="TxPowerLevelAdvScan" value="Pos_0"/>
             <Property id="TxPowerLevelConnection" value="Pos_0"/>

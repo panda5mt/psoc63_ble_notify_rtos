@@ -41,8 +41,8 @@ endif
 all: rtos_ble_mainapp.elf secondary-outputs
 
 dependents:
-	-cd /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_psoc6pdl/Debug && $(MAKE) all
-	-cd /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_cm0p/Debug && $(MAKE) all
+	-cd /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_psoc6pdl/Debug && $(MAKE) clean all
+	-cd /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_cm0p/Debug && $(MAKE) clean all
 
 # Tool invocations
 rtos_ble_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_psoc6pdl/Debug/librtos_ble_mainapp_psoc6pdl.a /Users/atsu/psoc63_ble_notify_rtos/rtos_ble_mainapp_cm0p/Debug/rtos_ble_mainapp_cm0p.elf
