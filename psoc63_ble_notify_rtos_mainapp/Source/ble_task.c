@@ -56,8 +56,8 @@
 #include "math.h"
 
 /* BLE application timeout */
-#define TIMEOUT_INTERVAL    pdMS_TO_TICKS(5 * 60000u) /* 5 x 60 sec = 5min */
-
+#define TIMEOUT_INTERVAL    pdMS_TO_TICKS(1 * 60000u) /* 1 x 60 sec = 1min */
+#define HIBERNATE_ENABLE		0 // 0:disable
 /* Queue Handle for BLE command and data */
 QueueHandle_t bleCommandDataQ;
 
@@ -121,12 +121,14 @@ void Task_Ble(void* pvParameters)
 	 * This timer is used to monitor, if no device is connected for 30 sec then
 	 * goto hibernate mode.
      */
+#if (HIBERNATE_ENABLE)
     xBleTimer =  xTimerCreate ("BLE Timer",         /* Timer name */
                                 TIMEOUT_INTERVAL,   /* Timer period */
                                 pdFALSE,            /* Auto reload enable */
                                 NULL,               /* Timer ID */
                                 BleTimerCallback);  /* Timer callback function */
-        
+#endif
+
     /* Start the BLE component and register the stack event handler */
     //bleApiResult = Cy_BLE_Start(StackEventHandler);
     /////
@@ -299,11 +301,11 @@ static void StackEventHandler(uint32_t eventType, void *eventParam)
         }
         
         /* This event is used to inform the application that BLE Stack shutdown is completed */
+#if (HIBERNATE_ENABLE)
         case CY_BLE_EVT_STACK_SHUTDOWN_COMPLETE:
         {
             DebugPrintf("Info     : BLE - Stack shutdown complete\r\n");
             DebugPrintf("Info     : Entering hibernate mode\r\n");
-            
             /* Wait for UART transmission complete */
             WAIT_FOR_UART_TX_COMPLETE;    
             
@@ -311,7 +313,7 @@ static void StackEventHandler(uint32_t eventType, void *eventParam)
             Cy_SysPm_Hibernate();
             break;
         }
-        
+#endif
         /* This event is received when there is a timeout */
         case CY_BLE_EVT_TIMEOUT:
         {    
@@ -428,6 +430,7 @@ static void StackEventHandler(uint32_t eventType, void *eventParam)
                 //UpdateStatusLed(LED_TURN_OFF, LED_TURN_ON);
             }
             
+#if (HIBERNATE_ENABLE)
             /**
              * Stop BLE timer.
              * If any device is connected then system will not go to
@@ -437,7 +440,7 @@ static void StackEventHandler(uint32_t eventType, void *eventParam)
             {
                 xTimerStop(xBleTimer, 0u);
             }
-            
+#endif
             break;
         }
         
@@ -628,6 +631,7 @@ static void StartAdvertisement(void)
                              "Error code:", bleApiResult);
         }
     }
+#if (HIBERNATE_ENABLE)
     /* If no device is connected then start the 30 sec timer */
     if(numActiveConn == 0)
     {
@@ -635,6 +639,7 @@ static void StartAdvertisement(void)
         xTimerReset(xBleTimer, 0u);
         xTimerStart(xBleTimer, 0u);
     }
+#endif
 }
 
 /*******************************************************************************
