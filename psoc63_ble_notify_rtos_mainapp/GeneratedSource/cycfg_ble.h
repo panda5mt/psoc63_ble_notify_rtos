@@ -89,8 +89,8 @@
 #define CY_BLE_GATT_MTU                             (0xFBu)
 
 /** The GATT Maximum attribute length */
-#define CY_BLE_GATT_DB_MAX_VALUE_LEN                (0x0006u)
-#define CY_BLE_GATT_DB_INDEX_COUNT                  (0x0011u)
+#define CY_BLE_GATT_DB_MAX_VALUE_LEN                (0x0008u)
+#define CY_BLE_GATT_DB_INDEX_COUNT                  (0x0018u)
 
 /** The number of characteristics supporting the Reliable Write property */
 #define CY_BLE_GATT_RELIABLE_CHAR_COUNT             (0x0000u)
@@ -99,10 +99,10 @@
 #define CY_BLE_GATT_RELIABLE_CHAR_LENGTH            (0x0000u)
 
 /** The size of the cy_ble_attValues array */
-#define CY_BLE_GATT_DB_ATT_VAL_COUNT                (0x1Cu)
+#define CY_BLE_GATT_DB_ATT_VAL_COUNT                (0x24u)
 
 /** The size of the cy_ble_attValuesLen array */
-#define CY_BLE_GATT_DB_ATT_VAL_LEN_COUNT            (0x0Au)
+#define CY_BLE_GATT_DB_ATT_VAL_LEN_COUNT            (0x0Du)
 
 /** GATT Role */
 #define CY_BLE_GATT_ROLE                            (0x01u)
@@ -114,7 +114,7 @@
 #define CY_BLE_GATT_ROLE_CLIENT                     (0u != (CY_BLE_GATT_ROLE & CY_BLE_GATT_CLIENT))
 
 /** Max unique services in the project */
-#define CY_BLE_MAX_SRVI                             (0x01u)
+#define CY_BLE_MAX_SRVI                             (0x02u)
 
 /** The parameter to enable the configuration of the L2CAP logical channels */
 #define CY_BLE_L2CAP_ENABLE                         (0x01u)
@@ -271,6 +271,8 @@
 
 #define CY_BLE_SECURITY_CONFIGURATION_0_INDEX   (0x00u)
 #define CY_BLE_ADV_PKT_0_INDEXFLAGS   (0x00u)
+#define CY_BLE_ADV_PKT_0_INDEXLOCAL_NAME   (0x03u)
+#define CY_BLE_SCN_PKT_0_INDEXLOCAL_NAME   (0x00u)
 #define CY_BLE_PERIPHERAL_CONFIGURATION_0_INDEX   (0x00u)
 
 
@@ -280,6 +282,8 @@
 
 #define CY_BLE_CUSTOM
 #define CY_BLE_CUSTOM_SERVER
+#define CY_BLE_DIS
+#define CY_BLE_DIS_SERVER
 
 
 /*******************************************************************************  
@@ -975,7 +979,7 @@ BLE_CONFIG_START
                                         </BleProperty>
                                         <BleProperty>
                                             <Property id="PropertyType" value="WriteWithoutResponse"/>
-                                            <Property id="Present" value="true"/>
+                                            <Property id="Present" value="false"/>
                                             <Property id="Mandatory" value="false"/>
                                         </BleProperty>
                                         <BleProperty>
@@ -1184,6 +1188,110 @@ BLE_CONFIG_START
                                 </Characteristic>
                             </Characteristics>
                         </Service>
+                        <Service type="org.bluetooth.service.device_information">
+                            <ServiceProperties>
+                                <Property id="EntityID" value="{b8d21fc4-a11a-4ae4-bcdc-f5ec2f871c85}"/>
+                                <Property id="ServiceDeclaration" value="Primary"/>
+                            </ServiceProperties>
+                            <Characteristics>
+                                <Characteristic type="org.bluetooth.characteristic.system_id">
+                                    <Fields>
+                                        <Field>
+                                            <FieldProperties>
+                                                <Property id="Name" value="Manufacturer Identifier"/>
+                                                <Property id="Value" value=""/>
+                                                <Property id="Format" value="f_uint40"/>
+                                            </FieldProperties>
+                                        </Field>
+                                        <Field>
+                                            <FieldProperties>
+                                                <Property id="Name" value="Organizationally Unique Identifier"/>
+                                                <Property id="Value" value=""/>
+                                                <Property id="Format" value="f_uint24"/>
+                                            </FieldProperties>
+                                        </Field>
+                                    </Fields>
+                                    <Properties>
+                                        <BleProperty>
+                                            <Property id="PropertyType" value="Read"/>
+                                            <Property id="Present" value="true"/>
+                                            <Property id="Mandatory" value="true"/>
+                                        </BleProperty>
+                                    </Properties>
+                                    <Permission>
+                                        <Property id="AccessPermissionRead" value="true"/>
+                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
+                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
+                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
+                                        <Property id="AccessPermissionWrite" value="false"/>
+                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
+                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
+                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
+                                    </Permission>
+                                    <Descriptors/>
+                                </Characteristic>
+                                <Characteristic type="org.bluetooth.characteristic.serial_number_string">
+                                    <Fields>
+                                        <Field>
+                                            <FieldProperties>
+                                                <Property id="Name" value="Serial Number"/>
+                                                <Property id="Value" value=""/>
+                                                <Property id="Format" value="f_utf8s"/>
+                                                <Property id="ByteLength" value="0"/>
+                                            </FieldProperties>
+                                        </Field>
+                                    </Fields>
+                                    <Properties>
+                                        <BleProperty>
+                                            <Property id="PropertyType" value="Read"/>
+                                            <Property id="Present" value="true"/>
+                                            <Property id="Mandatory" value="true"/>
+                                        </BleProperty>
+                                    </Properties>
+                                    <Permission>
+                                        <Property id="AccessPermissionRead" value="true"/>
+                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
+                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
+                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
+                                        <Property id="AccessPermissionWrite" value="false"/>
+                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
+                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
+                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
+                                    </Permission>
+                                    <Descriptors/>
+                                </Characteristic>
+                                <Characteristic type="org.bluetooth.characteristic.manufacturer_name_string">
+                                    <Fields>
+                                        <Field>
+                                            <FieldProperties>
+                                                <Property id="Name" value="Manufacturer Name"/>
+                                                <Property id="Value" value=""/>
+                                                <Property id="Format" value="f_utf8s"/>
+                                                <Property id="ByteLength" value="0"/>
+                                            </FieldProperties>
+                                        </Field>
+                                    </Fields>
+                                    <Properties>
+                                        <BleProperty>
+                                            <Property id="PropertyType" value="Read"/>
+                                            <Property id="Present" value="true"/>
+                                            <Property id="Mandatory" value="true"/>
+                                        </BleProperty>
+                                    </Properties>
+                                    <Permission>
+                                        <Property id="AccessPermissionRead" value="true"/>
+                                        <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
+                                        <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
+                                        <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
+                                        <Property id="AccessPermissionWrite" value="false"/>
+                                        <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
+                                        <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
+                                        <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>
+                                    </Permission>
+                                    <Descriptors/>
+                                </Characteristic>
+                            </Characteristics>
+                        </Service>
                     </Services>
                 </ProfileRole>
             </ProfileRoles>
@@ -1191,8 +1299,8 @@ BLE_CONFIG_START
     </Profiles>
     <GAP>
         <General>
-            <Property id="DeviceAddress" value="00A050-XXXXXX"/>
-            <Property id="SiliconGeneratedAddress" value="true"/>
+            <Property id="DeviceAddress" value="00A050-000000"/>
+            <Property id="SiliconGeneratedAddress" value="false"/>
             <Property id="DeviceName" value="p6xble"/>
             <Property id="Appearance" value="192"/>
             <Property id="TxPowerLevelAdvScan" value="Pos_0"/>
@@ -1202,23 +1310,24 @@ BLE_CONFIG_START
         <PeripheralConfigurations>
             <PeripheralConfiguration name="Peripheral configuration 0">
                 <AdvertisementProperties>
-                    <Property id="AdvDiscoveryMode" value="Limited"/>
+                    <Property id="AdvDiscoveryMode" value="General"/>
                     <Property id="AdvType" value="ConnectableUndirected"/>
                     <Property id="AdvFilterPolicy" value="ScanRequestAnyConnectRequestAny"/>
                     <Property id="AdvChannelType" value="All"/>
                     <Property id="AdvFastScanIntervalMin" value="20"/>
                     <Property id="AdvFastScanIntervalMax" value="30"/>
-                    <Property id="AdvFastTimeoutEnabled" value="true"/>
-                    <Property id="AdvFastTimeout" value="30"/>
-                    <Property id="EnableReducedAdvertising" value="true"/>
-                    <Property id="AdvReducedScanIntervalMin" value="1000"/>
-                    <Property id="AdvReducedScanIntervalMax" value="10240"/>
-                    <Property id="AdvReducedTimeoutEnabled" value="true"/>
-                    <Property id="AdvReducedTimeout" value="150"/>
+                    <Property id="AdvFastTimeoutEnabled" value="false"/>
+                    <Property id="EnableReducedAdvertising" value="false"/>
                 </AdvertisementProperties>
                 <AdvertisementPacket>
                     <Property id="AdFlags" value="true"/>
+                    <Property id="AdLocalName" value="true"/>
+                    <Property id="LocalNameType" value="Complete"/>
                 </AdvertisementPacket>
+                <ScanResponsePacket>
+                    <Property id="AdLocalName" value="true"/>
+                    <Property id="LocalNameType" value="Complete"/>
+                </ScanResponsePacket>
             </PeripheralConfiguration>
         </PeripheralConfigurations>
         <SecurityConfigurations>

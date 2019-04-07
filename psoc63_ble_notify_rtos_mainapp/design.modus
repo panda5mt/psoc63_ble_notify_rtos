@@ -18,16 +18,6 @@
                 <Param id="fracDivider" value="0"/>
                 <Param id="startOnReset" value="true"/>
             </Block>
-            <Block location="peri[0].div_8[0]" alias="KIT_I2C_Clock" template="mxs40peripheralclock" version="1.0">
-                <Param id="intDivider" value="6"/>
-                <Param id="fracDivider" value="0"/>
-                <Param id="startOnReset" value="true"/>
-            </Block>
-            <Block location="peri[0].div_8[1]" alias="CapSense_Clock" template="mxs40peripheralclock" version="1.0">
-                <Param id="intDivider" value="1"/>
-                <Param id="fracDivider" value="0"/>
-                <Param id="startOnReset" value="true"/>
-            </Block>
         </Clocks>
         <Peripherals>
             <Block location="bless[0]" alias="BLE" template="mxs40ble" version="1.1">
@@ -359,10 +349,6 @@
         <Net>
             <Port name="ioss[0].port[0].pin[1].analog[0]"/>
             <Port name="srss[0].clock[0].wco[0].wco_out[0]"/>
-        </Net>
-        <Net>
-            <Port name="ioss[0].port[0].pin[4].aux[0]"/>
-            <Port name="srss[0].power[0].hibernate_wakeup[1]"/>
         </Net>
         <Net>
             <Port name="ioss[0].port[5].pin[0].digital_inout[0]"/>

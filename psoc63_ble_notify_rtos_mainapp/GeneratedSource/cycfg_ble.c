@@ -46,8 +46,8 @@
         {
             .fastAdvIntervalMin = 0x0020u, 
             .fastAdvIntervalMax = 0x0030u, 
-            .fastAdvTimeOut = 0x1Eu, 
-            .slowAdvEnable = 0x01u, 
+            .fastAdvTimeOut = 0x00u, 
+            .slowAdvEnable = 0x00u, 
             .slowAdvIntervalMin = 0x0640u, 
             .slowAdvIntervalMax = 0x4000u, 
             .slowAdvTimeOut = 0x96u, 
@@ -77,13 +77,13 @@
     {
         /* Peripheral configuration 0 */
         {
-            .advData = { 0x02u, 0x01u, 0x05u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
+            .advData = { 0x02u, 0x01u, 0x06u, 0x07u, 0x09u, 0x70u,
+                0x36u, 0x78u, 0x62u, 0x6Cu, 0x65u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u }, 
-            .advDataLen = 0x03u, 
+            .advDataLen = 0x0Bu, 
         },
     };
 
@@ -93,13 +93,13 @@
     {
         /* Peripheral configuration 0 */
         {
-            .scanRspData = { 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
+            .scanRspData = { 0x07u, 0x09u, 0x70u, 0x36u, 0x78u, 0x62u,
+                0x6Cu, 0x65u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u }, 
-            .scanRspDataLen = 0x00u, 
+            .scanRspDataLen = 0x08u, 
         },
     };
 
@@ -115,11 +115,11 @@
     {
         /* Peripheral configuration 0 */
         {
-            .discMode = 0x01u, 
+            .discMode = 0x02u, 
             .advParam = &cy_ble_discoveryParam[0], 
             .advData = &cy_ble_discoveryData[0], 
             .scanRspData = &cy_ble_scanRspData[0], 
-            .advTo = 0x1Eu, 
+            .advTo = 0x00u, 
         },
     };
 #endif /* (CY_BLE_GAP_ROLE_PERIPHERAL || CY_BLE_GAP_ROLE_BROADCASTER) */
@@ -184,6 +184,15 @@
         0xD8u, 0xBBu, 0x25u, 0xD4u, 0x59u, 0x9Au, 0x77u, 0x99u, 0x8Eu, 0x4Eu, 0xCCu, 0x7Fu, 0x1Au, 0xA4u, 0x60u, 0xEDu,
 
         /* Custom Characteristic */
+        
+
+        /* System ID */
+        0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
+
+        /* Serial Number String */
+        
+
+        /* Manufacturer Name String */
     };
 
     #if (CY_BLE_GATT_DB_CCCD_COUNT != 0u)
@@ -212,28 +221,38 @@
         { 0x0000u, (void *)&cy_ble_attValues[12] }, /* Custom Descriptor */
         { 0x0000u, (void *)&cy_ble_attValues[28] }, /* Custom Characteristic */
         { 0x0002u, (void *)&cy_ble_attValuesCCCD[2] }, /* Client Characteristic Configuration */
+        { 0x0008u, (void *)&cy_ble_attValues[28] }, /* System ID */
+        { 0x0000u, (void *)&cy_ble_attValues[36] }, /* Serial Number String */
+        { 0x0000u, (void *)&cy_ble_attValues[36] }, /* Manufacturer Name String */
     };
 
     /* GATT Data Base */
     static const cy_stc_ble_gatts_db_t cy_ble_gattDB[CY_BLE_GATT_DB_INDEX_COUNT] =
     {
-        { 0x0001u, 0x2800u /* Primary service                     */, 0x00000001u /*        */, 0x0005u, {{0x1800u, NULL}}                           },
-        { 0x0002u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd     */, 0x0003u, {{0x2A00u, NULL}}                           },
-        { 0x0003u, 0x2A00u /* Device Name                         */, 0x01020001u /* rd     */, 0x0003u, {{0x0006u, (void *)&cy_ble_attValuesLen[0]}} },
-        { 0x0004u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd     */, 0x0005u, {{0x2A01u, NULL}}                           },
-        { 0x0005u, 0x2A01u /* Appearance                          */, 0x01020001u /* rd     */, 0x0005u, {{0x0002u, (void *)&cy_ble_attValuesLen[1]}} },
-        { 0x0006u, 0x2800u /* Primary service                     */, 0x00000001u /*        */, 0x0009u, {{0x1801u, NULL}}                           },
-        { 0x0007u, 0x2803u /* Characteristic                      */, 0x00200001u /* ind    */, 0x0009u, {{0x2A05u, NULL}}                           },
-        { 0x0008u, 0x2A05u /* Service Changed                     */, 0x01200000u /* ind    */, 0x0009u, {{0x0004u, (void *)&cy_ble_attValuesLen[2]}} },
-        { 0x0009u, 0x2902u /* Client Characteristic Configuration */, 0x030A0101u /* rd,wr  */, 0x0009u, {{0x0002u, (void *)&cy_ble_attValuesLen[3]}} },
-        { 0x000Au, 0x2800u /* Primary service                     */, 0x08000001u /*        */, 0x000Du, {{0x0010u, (void *)&cy_ble_attValuesLen[4]}} },
-        { 0x000Bu, 0x2803u /* Characteristic                      */, 0x000C0001u /* wr,wwr */, 0x000Du, {{0x0010u, (void *)&cy_ble_attValuesLen[5]}} },
-        { 0x000Cu, 0x524Fu /* Custom Characteristic               */, 0x090C0100u /* wr,wwr */, 0x000Du, {{0x0000u, (void *)&cy_ble_attValuesLen[6]}} },
-        { 0x000Du, 0xA41Au /* Custom Descriptor                   */, 0x09000000u /*        */, 0x000Du, {{0x0000u, (void *)&cy_ble_attValuesLen[7]}} },
-        { 0x000Eu, 0x2800u /* Primary service                     */, 0x00000001u /*        */, 0x0011u, {{0xBBBBu, NULL}}                           },
-        { 0x000Fu, 0x2803u /* Characteristic                      */, 0x00100001u /* ntf    */, 0x0011u, {{0xCCCCu, NULL}}                           },
-        { 0x0010u, 0xCCCCu /* Custom Characteristic               */, 0x01100000u /* ntf    */, 0x0011u, {{0x0000u, (void *)&cy_ble_attValuesLen[8]}} },
-        { 0x0011u, 0x2902u /* Client Characteristic Configuration */, 0x030A0101u /* rd,wr  */, 0x0011u, {{0x0002u, (void *)&cy_ble_attValuesLen[9]}} },
+        { 0x0001u, 0x2800u /* Primary service                     */, 0x00000001u /*       */, 0x0005u, {{0x1800u, NULL}}                           },
+        { 0x0002u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd    */, 0x0003u, {{0x2A00u, NULL}}                           },
+        { 0x0003u, 0x2A00u /* Device Name                         */, 0x01020001u /* rd    */, 0x0003u, {{0x0006u, (void *)&cy_ble_attValuesLen[0]}} },
+        { 0x0004u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd    */, 0x0005u, {{0x2A01u, NULL}}                           },
+        { 0x0005u, 0x2A01u /* Appearance                          */, 0x01020001u /* rd    */, 0x0005u, {{0x0002u, (void *)&cy_ble_attValuesLen[1]}} },
+        { 0x0006u, 0x2800u /* Primary service                     */, 0x00000001u /*       */, 0x0009u, {{0x1801u, NULL}}                           },
+        { 0x0007u, 0x2803u /* Characteristic                      */, 0x00200001u /* ind   */, 0x0009u, {{0x2A05u, NULL}}                           },
+        { 0x0008u, 0x2A05u /* Service Changed                     */, 0x01200000u /* ind   */, 0x0009u, {{0x0004u, (void *)&cy_ble_attValuesLen[2]}} },
+        { 0x0009u, 0x2902u /* Client Characteristic Configuration */, 0x030A0101u /* rd,wr */, 0x0009u, {{0x0002u, (void *)&cy_ble_attValuesLen[3]}} },
+        { 0x000Au, 0x2800u /* Primary service                     */, 0x08000001u /*       */, 0x000Du, {{0x0010u, (void *)&cy_ble_attValuesLen[4]}} },
+        { 0x000Bu, 0x2803u /* Characteristic                      */, 0x00080001u /* wr    */, 0x000Du, {{0x0010u, (void *)&cy_ble_attValuesLen[5]}} },
+        { 0x000Cu, 0x524Fu /* Custom Characteristic               */, 0x09080100u /* wr    */, 0x000Du, {{0x0000u, (void *)&cy_ble_attValuesLen[6]}} },
+        { 0x000Du, 0xA41Au /* Custom Descriptor                   */, 0x09000000u /*       */, 0x000Du, {{0x0000u, (void *)&cy_ble_attValuesLen[7]}} },
+        { 0x000Eu, 0x2800u /* Primary service                     */, 0x00000001u /*       */, 0x0011u, {{0xBBBBu, NULL}}                           },
+        { 0x000Fu, 0x2803u /* Characteristic                      */, 0x00100001u /* ntf   */, 0x0011u, {{0xCCCCu, NULL}}                           },
+        { 0x0010u, 0xCCCCu /* Custom Characteristic               */, 0x01100000u /* ntf   */, 0x0011u, {{0x0000u, (void *)&cy_ble_attValuesLen[8]}} },
+        { 0x0011u, 0x2902u /* Client Characteristic Configuration */, 0x030A0101u /* rd,wr */, 0x0011u, {{0x0002u, (void *)&cy_ble_attValuesLen[9]}} },
+        { 0x0012u, 0x2800u /* Primary service                     */, 0x00000001u /*       */, 0x0018u, {{0x180Au, NULL}}                           },
+        { 0x0013u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd    */, 0x0014u, {{0x2A23u, NULL}}                           },
+        { 0x0014u, 0x2A23u /* System ID                           */, 0x01020001u /* rd    */, 0x0014u, {{0x0008u, (void *)&cy_ble_attValuesLen[10]}} },
+        { 0x0015u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd    */, 0x0016u, {{0x2A25u, NULL}}                           },
+        { 0x0016u, 0x2A25u /* Serial Number String                */, 0x01020001u /* rd    */, 0x0016u, {{0x0000u, (void *)&cy_ble_attValuesLen[11]}} },
+        { 0x0017u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd    */, 0x0018u, {{0x2A29u, NULL}}                           },
+        { 0x0018u, 0x2A29u /* Manufacturer Name String            */, 0x01020001u /* rd    */, 0x0018u, {{0x0000u, (void *)&cy_ble_attValuesLen[12]}} },
     };
 #endif /* (CY_BLE_GATT_ROLE_SERVER) */
 
@@ -244,7 +263,7 @@
 
 static const cy_stc_ble_params_t cy_ble_params = {
     /** Silicon Device Address Enabled */
-    .siliconDeviceAddressEn = 0x01u,
+    .siliconDeviceAddressEn = 0x00u,
 
     /** Using external buffer for Prepare Write Request */
     .gattPrepareWriteExtBuffEn = CY_BLE_GATT_EN_EXT_PREP_WRITE_BUFF,
@@ -1156,7 +1175,18 @@ const cy_stc_ble_config_t cy_ble_config =
     /* Service GATT DB handles structure */
     const cy_stc_ble_diss_t cy_ble_diss =
     {
-        
+        .serviceHandle = 0x0012u, /* Handle of the DIS service */ 
+        .charHandle = {
+            0x0018u, /* Handle of the Manufacturer Name String characteristic */ 
+            CY_BLE_GATT_INVALID_ATTR_HANDLE_VALUE, /* Handle of the Model Number String characteristic */ 
+            0x0016u, /* Handle of the Serial Number String characteristic */ 
+            CY_BLE_GATT_INVALID_ATTR_HANDLE_VALUE, /* Handle of the Hardware Revision String characteristic */ 
+            CY_BLE_GATT_INVALID_ATTR_HANDLE_VALUE, /* Handle of the Firmware Revision String characteristic */ 
+            CY_BLE_GATT_INVALID_ATTR_HANDLE_VALUE, /* Handle of the Software Revision String characteristic */ 
+            0x0014u, /* Handle of the System ID characteristic */ 
+            CY_BLE_GATT_INVALID_ATTR_HANDLE_VALUE, /* Handle of the IEEE 11073-20601 Regulatory Certification Data List characteristic */ 
+            CY_BLE_GATT_INVALID_ATTR_HANDLE_VALUE, /* Handle of the PnP ID characteristic */ 
+        },
     };
 
     /* The configuration structure for the Device Information service (server) */
