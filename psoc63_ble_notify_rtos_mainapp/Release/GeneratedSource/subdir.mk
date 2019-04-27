@@ -11,6 +11,7 @@ C_SRCS += \
 ../GeneratedSource/cycfg_peripherals.c \
 ../GeneratedSource/cycfg_pins.c \
 ../GeneratedSource/cycfg_platform.c \
+../GeneratedSource/cycfg_qspi_memslot.c \
 ../GeneratedSource/cycfg_routing.c 
 
 OBJS += \
@@ -21,6 +22,7 @@ OBJS += \
 ./GeneratedSource/cycfg_peripherals.o \
 ./GeneratedSource/cycfg_pins.o \
 ./GeneratedSource/cycfg_platform.o \
+./GeneratedSource/cycfg_qspi_memslot.o \
 ./GeneratedSource/cycfg_routing.o 
 
 C_DEPS += \
@@ -31,6 +33,7 @@ C_DEPS += \
 ./GeneratedSource/cycfg_peripherals.d \
 ./GeneratedSource/cycfg_pins.d \
 ./GeneratedSource/cycfg_platform.d \
+./GeneratedSource/cycfg_qspi_memslot.d \
 ./GeneratedSource/cycfg_routing.d 
 
 

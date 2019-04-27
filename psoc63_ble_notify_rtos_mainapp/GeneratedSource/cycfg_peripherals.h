@@ -26,8 +26,9 @@
 #define CYCFG_PERIPHERALS_H
 
 #include "cycfg_notices.h"
-#include "cy_scb_uart.h"
+#include "cy_scb_spi.h"
 #include "cy_sysclk.h"
+#include "cy_scb_uart.h"
 #include "cy_mcwdt.h"
 
 #if defined(__cplusplus)
@@ -41,6 +42,8 @@ extern "C" {
 	#define CY_BLE_CORE 4U
 #endif
 #define CY_BLE_IRQ bless_interrupt_IRQn
+#define SPI_0_HW SCB1
+#define SPI_0_IRQ scb_1_interrupt_IRQn
 #define KIT_UART_HW SCB2
 #define KIT_UART_IRQ scb_2_interrupt_IRQn
 #define DEBUG_UART_HW SCB5
@@ -48,6 +51,7 @@ extern "C" {
 #define MCWDT_HW MCWDT_STRUCT0
 #define MCWDT_IRQ srss_interrupt_mcwdt_0_IRQn
 
+extern const cy_stc_scb_spi_config_t SPI_0_config;
 extern const cy_stc_scb_uart_config_t KIT_UART_config;
 extern const cy_stc_scb_uart_config_t DEBUG_UART_config;
 extern const cy_stc_mcwdt_config_t MCWDT_config;

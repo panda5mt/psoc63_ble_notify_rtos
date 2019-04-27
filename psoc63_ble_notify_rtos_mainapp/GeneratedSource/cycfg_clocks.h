@@ -36,6 +36,8 @@ extern "C" {
 #define KIT_UART_Clock_NUM 0U
 #define DEBUG_UART_Clock_HW CY_SYSCLK_DIV_16_BIT
 #define DEBUG_UART_Clock_NUM 1U
+#define peri_0_div_8_7_HW CY_SYSCLK_DIV_8_BIT
+#define peri_0_div_8_7_NUM 7U
 
 void init_cycfg_clocks(void);
 

@@ -72,6 +72,86 @@ const cy_stc_gpio_pin_config_t KIT_BTN1_config =
 	.vrefSel = 0UL,
 	.vohSel = 0UL,
 };
+const cy_stc_gpio_pin_config_t ioss_0_port_0_pin_5_config = 
+{
+	.outVal = 1,
+	.driveMode = CY_GPIO_DM_STRONG_IN_OFF,
+	.hsiom = ioss_0_port_0_pin_5_HSIOM,
+	.intEdge = CY_GPIO_INTR_DISABLE,
+	.intMask = 0UL,
+	.vtrip = CY_GPIO_VTRIP_CMOS,
+	.slewRate = CY_GPIO_SLEW_FAST,
+	.driveSel = CY_GPIO_DRIVE_FULL,
+	.vregEn = 0UL,
+	.ibufMode = 0UL,
+	.vtripSel = 0UL,
+	.vrefSel = 0UL,
+	.vohSel = 0UL,
+};
+const cy_stc_gpio_pin_config_t SPI_0_MOSI_config = 
+{
+	.outVal = 1,
+	.driveMode = CY_GPIO_DM_HIGHZ,
+	.hsiom = SPI_0_MOSI_HSIOM,
+	.intEdge = CY_GPIO_INTR_DISABLE,
+	.intMask = 0UL,
+	.vtrip = CY_GPIO_VTRIP_CMOS,
+	.slewRate = CY_GPIO_SLEW_FAST,
+	.driveSel = CY_GPIO_DRIVE_FULL,
+	.vregEn = 0UL,
+	.ibufMode = 0UL,
+	.vtripSel = 0UL,
+	.vrefSel = 0UL,
+	.vohSel = 0UL,
+};
+const cy_stc_gpio_pin_config_t SPI_0_MISO_config = 
+{
+	.outVal = 1,
+	.driveMode = CY_GPIO_DM_STRONG_IN_OFF,
+	.hsiom = SPI_0_MISO_HSIOM,
+	.intEdge = CY_GPIO_INTR_DISABLE,
+	.intMask = 0UL,
+	.vtrip = CY_GPIO_VTRIP_CMOS,
+	.slewRate = CY_GPIO_SLEW_FAST,
+	.driveSel = CY_GPIO_DRIVE_FULL,
+	.vregEn = 0UL,
+	.ibufMode = 0UL,
+	.vtripSel = 0UL,
+	.vrefSel = 0UL,
+	.vohSel = 0UL,
+};
+const cy_stc_gpio_pin_config_t SPI_0_SCLK_config = 
+{
+	.outVal = 1,
+	.driveMode = CY_GPIO_DM_HIGHZ,
+	.hsiom = SPI_0_SCLK_HSIOM,
+	.intEdge = CY_GPIO_INTR_DISABLE,
+	.intMask = 0UL,
+	.vtrip = CY_GPIO_VTRIP_CMOS,
+	.slewRate = CY_GPIO_SLEW_FAST,
+	.driveSel = CY_GPIO_DRIVE_FULL,
+	.vregEn = 0UL,
+	.ibufMode = 0UL,
+	.vtripSel = 0UL,
+	.vrefSel = 0UL,
+	.vohSel = 0UL,
+};
+const cy_stc_gpio_pin_config_t SPI_0_SS0_config = 
+{
+	.outVal = 1,
+	.driveMode = CY_GPIO_DM_HIGHZ,
+	.hsiom = SPI_0_SS0_HSIOM,
+	.intEdge = CY_GPIO_INTR_DISABLE,
+	.intMask = 0UL,
+	.vtrip = CY_GPIO_VTRIP_CMOS,
+	.slewRate = CY_GPIO_SLEW_FAST,
+	.driveSel = CY_GPIO_DRIVE_FULL,
+	.vregEn = 0UL,
+	.ibufMode = 0UL,
+	.vtripSel = 0UL,
+	.vrefSel = 0UL,
+	.vohSel = 0UL,
+};
 const cy_stc_gpio_pin_config_t DEBUG_UART_RX_config = 
 {
 	.outVal = 1,
@@ -93,6 +173,38 @@ const cy_stc_gpio_pin_config_t DEBUG_UART_TX_config =
 	.outVal = 1,
 	.driveMode = CY_GPIO_DM_STRONG_IN_OFF,
 	.hsiom = DEBUG_UART_TX_HSIOM,
+	.intEdge = CY_GPIO_INTR_DISABLE,
+	.intMask = 0UL,
+	.vtrip = CY_GPIO_VTRIP_CMOS,
+	.slewRate = CY_GPIO_SLEW_FAST,
+	.driveSel = CY_GPIO_DRIVE_FULL,
+	.vregEn = 0UL,
+	.ibufMode = 0UL,
+	.vtripSel = 0UL,
+	.vrefSel = 0UL,
+	.vohSel = 0UL,
+};
+const cy_stc_gpio_pin_config_t ioss_0_port_5_pin_2_config = 
+{
+	.outVal = 1,
+	.driveMode = CY_GPIO_DM_ANALOG,
+	.hsiom = ioss_0_port_5_pin_2_HSIOM,
+	.intEdge = CY_GPIO_INTR_DISABLE,
+	.intMask = 0UL,
+	.vtrip = CY_GPIO_VTRIP_CMOS,
+	.slewRate = CY_GPIO_SLEW_FAST,
+	.driveSel = CY_GPIO_DRIVE_FULL,
+	.vregEn = 0UL,
+	.ibufMode = 0UL,
+	.vtripSel = 0UL,
+	.vrefSel = 0UL,
+	.vohSel = 0UL,
+};
+const cy_stc_gpio_pin_config_t ioss_0_port_5_pin_6_config = 
+{
+	.outVal = 1,
+	.driveMode = CY_GPIO_DM_HIGHZ,
+	.hsiom = ioss_0_port_5_pin_6_HSIOM,
 	.intEdge = CY_GPIO_INTR_DISABLE,
 	.intMask = 0UL,
 	.vtrip = CY_GPIO_VTRIP_CMOS,
@@ -210,9 +322,23 @@ void init_cycfg_pins(void)
 
 	Cy_GPIO_Pin_Init(KIT_BTN1_PORT, KIT_BTN1_PIN, &KIT_BTN1_config);
 
+	Cy_GPIO_Pin_Init(ioss_0_port_0_pin_5_PORT, ioss_0_port_0_pin_5_PIN, &ioss_0_port_0_pin_5_config);
+
+	Cy_GPIO_Pin_Init(SPI_0_MOSI_PORT, SPI_0_MOSI_PIN, &SPI_0_MOSI_config);
+
+	Cy_GPIO_Pin_Init(SPI_0_MISO_PORT, SPI_0_MISO_PIN, &SPI_0_MISO_config);
+
+	Cy_GPIO_Pin_Init(SPI_0_SCLK_PORT, SPI_0_SCLK_PIN, &SPI_0_SCLK_config);
+
+	Cy_GPIO_Pin_Init(SPI_0_SS0_PORT, SPI_0_SS0_PIN, &SPI_0_SS0_config);
+
 	Cy_GPIO_Pin_Init(DEBUG_UART_RX_PORT, DEBUG_UART_RX_PIN, &DEBUG_UART_RX_config);
 
 	Cy_GPIO_Pin_Init(DEBUG_UART_TX_PORT, DEBUG_UART_TX_PIN, &DEBUG_UART_TX_config);
+
+	Cy_GPIO_Pin_Init(ioss_0_port_5_pin_2_PORT, ioss_0_port_5_pin_2_PIN, &ioss_0_port_5_pin_2_config);
+
+	Cy_GPIO_Pin_Init(ioss_0_port_5_pin_6_PORT, ioss_0_port_5_pin_6_PIN, &ioss_0_port_5_pin_6_config);
 
 	Cy_GPIO_Pin_Init(SWO_PORT, SWO_PIN, &SWO_config);
 

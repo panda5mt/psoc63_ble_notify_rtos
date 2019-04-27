@@ -120,7 +120,7 @@
 #define CY_BLE_L2CAP_ENABLE                         (0x01u)
 
 /** L2CAP MTU Size */
-#define CY_BLE_CONFIG_L2CAP_MTU                     (0x17u)
+#define CY_BLE_CONFIG_L2CAP_MTU                     (0xFAu)
 
 /** The number of L2CAP Logical channels */
 #define CY_BLE_CONFIG_L2CAP_LOGICAL_CHANNEL_COUNT   (0x01u)
@@ -1344,7 +1344,7 @@ BLE_CONFIG_START
         <Property id="EnableL2capLogicalChannels" value="true"/>
         <Property id="L2capNumChannels" value="1"/>
         <Property id="L2capNumPsm" value="1"/>
-        <Property id="L2capMtuSize" value="23"/>
+        <Property id="L2capMtuSize" value="250"/>
     </L2capProperties>
     <LinkLayerProperties>
         <Property id="MaxTxPayloadSize" value="251"/>

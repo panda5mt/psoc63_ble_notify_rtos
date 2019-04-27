@@ -41,13 +41,13 @@ endif
 all: psoc63_ble_notify_rtos_mainapp.elf secondary-outputs
 
 dependents:
-	-cd /Users/atsu/mtw/rtos_mtw1.1/psoc6pdl_Cortex-M4/Debug && $(MAKE) all
+	-cd /Users/atsu/psoc63_ble_notify_rtos/psoc6pdl_Cortex-M4/Debug && $(MAKE) all
 
 # Tool invocations
-psoc63_ble_notify_rtos_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/atsu/mtw/rtos_mtw1.1/psoc6pdl_Cortex-M4/Debug/libpsoc6pdl_Cortex-M4.a
+psoc63_ble_notify_rtos_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/atsu/psoc63_ble_notify_rtos/psoc6pdl_Cortex-M4/Debug/libpsoc6pdl_Cortex-M4.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM Cross C Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -Og -ffunction-sections -fdata-sections -Wall  -g3 -T "/Users/atsu/mtw/rtos_mtw1.1/psoc63_ble_notify_rtos_mainapp/cy8c6xx7_cm4_dual.ld" -Xlinker --gc-sections -Wl,-Map,"psoc63_ble_notify_rtos_mainapp.map" --specs=nano.specs -ffat-lto-objects -g --enable-objc-gc -mfpu=fpv4-sp-d16 -o "psoc63_ble_notify_rtos_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -Og -ffunction-sections -fdata-sections -Wall  -g3 -T "/Users/atsu/psoc63_ble_notify_rtos/psoc63_ble_notify_rtos_mainapp/cy8c6xx7_cm4_dual.ld" -Xlinker --gc-sections -Wl,-Map,"psoc63_ble_notify_rtos_mainapp.map" --specs=nano.specs -ffat-lto-objects -g --enable-objc-gc -mfpu=fpv4-sp-d16 -o "psoc63_ble_notify_rtos_mainapp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -58,12 +58,12 @@ clean:
 	-@echo ' '
 
 post-build:
-	-/Applications/ModusToolbox_1.1/tools/modus-shell-1.0/bin/bash --norc --noprofile /Applications/ModusToolbox_1.1/libraries/psoc6sw-1.1/makefiles/platforms/PSoC6_cm4_dual/cymcuelftool_postbuild.bash /Applications/ModusToolbox_1.1/tools/cymcuelftool-1.0/bin/cymcuelftool /Users/atsu/mtw/rtos_mtw1.1/psoc63_ble_notify_rtos_mainapp/psoc6_01_cm0p_sleep.elf /Users/atsu/mtw/rtos_mtw1.1/psoc63_ble_notify_rtos_mainapp/Debug/psoc63_ble_notify_rtos_mainapp.elf ARM_CM4
+	-/Applications/ModusToolbox_1.1/tools/modus-shell-1.0/bin/bash --norc --noprofile /Applications/ModusToolbox_1.1/libraries/psoc6sw-1.1/makefiles/platforms/PSoC6_cm4_dual/cymcuelftool_postbuild.bash /Applications/ModusToolbox_1.1/tools/cymcuelftool-1.0/bin/cymcuelftool /Users/atsu/psoc63_ble_notify_rtos/psoc63_ble_notify_rtos_mainapp/psoc6_01_cm0p_sleep.elf /Users/atsu/psoc63_ble_notify_rtos/psoc63_ble_notify_rtos_mainapp/Debug/psoc63_ble_notify_rtos_mainapp.elf ARM_CM4
 	-@echo ' '
 
 secondary-outputs:
 
 .PHONY: all clean dependents post-build
-/Users/atsu/mtw/rtos_mtw1.1/psoc6pdl_Cortex-M4/Debug/libpsoc6pdl_Cortex-M4.a:
+/Users/atsu/psoc63_ble_notify_rtos/psoc6pdl_Cortex-M4/Debug/libpsoc6pdl_Cortex-M4.a:
 
 -include ../makefile.targets

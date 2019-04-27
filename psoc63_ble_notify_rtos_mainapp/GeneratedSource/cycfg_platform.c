@@ -36,6 +36,9 @@
 #define CY_CFG_SYSCLK_CLKHF0_ENABLED 1
 #define CY_CFG_SYSCLK_CLKHF0_FREQ_MHZ 144UL
 #define CY_CFG_SYSCLK_CLKHF0_CLKPATH CY_SYSCLK_CLKHF_IN_CLKPATH1
+#define CY_CFG_SYSCLK_CLKHF1_ENABLED 1
+#define CY_CFG_SYSCLK_CLKHF1_FREQ_MHZ 8UL
+#define CY_CFG_SYSCLK_CLKHF1_CLKPATH CY_SYSCLK_CLKHF_IN_CLKPATH0
 #define CY_CFG_SYSCLK_ILO_ENABLED 1
 #define CY_CFG_SYSCLK_IMO_ENABLED 1
 #define CY_CFG_SYSCLK_CLKLF_ENABLED 1
@@ -100,6 +103,12 @@ __STATIC_INLINE void Cy_SysClk_ClkHf0Init()
     Cy_SysClk_ClkHfSetSource(0U, CY_CFG_SYSCLK_CLKHF0_CLKPATH);
     Cy_SysClk_ClkHfSetDivider(0U, CY_SYSCLK_CLKHF_NO_DIVIDE);
 }
+__STATIC_INLINE void Cy_SysClk_ClkHf1Init()
+{
+    Cy_SysClk_ClkHfSetSource(1U, CY_CFG_SYSCLK_CLKHF1_CLKPATH);
+    Cy_SysClk_ClkHfSetDivider(1U, CY_SYSCLK_CLKHF_NO_DIVIDE);
+    Cy_SysClk_ClkHfEnable(1U);
+}
 __STATIC_INLINE void Cy_SysClk_IloInit()
 {
     /* The WDT is unlocked in the default startup code */
@@ -109,7 +118,7 @@ __STATIC_INLINE void Cy_SysClk_IloInit()
 __STATIC_INLINE void Cy_SysClk_ClkLfInit()
 {
     /* The WDT is unlocked in the default startup code */
-    Cy_SysClk_ClkLfSetSource(CY_SYSCLK_CLKLF_IN_ILO);
+    Cy_SysClk_ClkLfSetSource(CY_SYSCLK_CLKLF_IN_WCO);
 }
 __STATIC_INLINE void Cy_SysClk_ClkPath0Init()
 {
