@@ -102,12 +102,12 @@
 #define CY_BLE_GATT_DB_ATT_VAL_COUNT                (0x24u)
 
 /** The size of the cy_ble_attValuesLen array */
-#define CY_BLE_GATT_DB_ATT_VAL_LEN_COUNT            (0x0Du)
+#define CY_BLE_GATT_DB_ATT_VAL_LEN_COUNT            (0x0Bu)
 
 /** GATT Role */
 #define CY_BLE_GATT_ROLE                            (0x01u)
 #define CY_BLE_GATT_DB_CCCD_COUNT                   (0x04u)
-#define CY_BLE_ATT_UUID_128_COUNT                   (0x02u)
+#define CY_BLE_ATT_UUID_128_COUNT                   (0x00u)
 
 /** The GATT Role defines */
 #define CY_BLE_GATT_ROLE_SERVER                     (0u != (CY_BLE_GATT_ROLE & CY_BLE_GATT_SERVER))
@@ -947,14 +947,14 @@ BLE_CONFIG_START
                             <ServiceProperties>
                                 <Property id="EntityID" value="{67113fa8-ab0f-45af-adea-797743a77ff9}"/>
                                 <Property id="DisplayName" value="Custom Service"/>
-                                <Property id="UUID" value="8C0E8877-3244-4C28-BAB0-EB823EFA9109"/>
+                                <Property id="UUID" value="AAAA"/>
                                 <Property id="ServiceDeclaration" value="Primary"/>
                             </ServiceProperties>
                             <Characteristics>
                                 <Characteristic type="org.bluetooth.characteristic.custom">
                                     <CharacteristicProperties>
                                         <Property id="DisplayName" value="Custom Characteristic"/>
-                                        <Property id="UUID" value="40EF524F-1378-49EC-9D63-BC85C211AC66"/>
+                                        <Property id="UUID" value="BBBB"/>
                                     </CharacteristicProperties>
                                     <Fields>
                                         <Field>
