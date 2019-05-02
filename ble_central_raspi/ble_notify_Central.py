@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*- Cy63ble Button Event Notification
 import sys
-#import logging
 import time
 from bluepy.btle import *
-# uncomment the following line to get debug information
-#logging.basicConfig(format='%(asctime)s: %(message)s', level=print) 
 class ControlCy63ble:
   def __init__(self, mac):
     self._data = {}
@@ -21,13 +18,15 @@ class ControlCy63ble:
   def _enableNotification(self):
     try:
       # Enable notification
-       print('Notifications enabled')
+      self.p.writeCharacteristic(0x2902, b'\x01\x00')
+      print('Notifications enabled')
     except BTLEException as err:
       print(err)
       self.p.disconnect()
   def _disableNotification(self):
     try:
       # Disble notification
+      self.p.writeCharacteristic(0x2902, b'\x00\x00')
       print('Notifications disabled')
     except BTLEException as err:
       print(err)
@@ -37,7 +36,7 @@ class ControlCy63ble:
       # Enable notification
       self._enableNotification()
       # Wait for notifications
-      print('Waiting for button pushed 180 second')
+      print('Waiting for button pushed 180 second\n')
       while self.p.waitForNotifications(180.0):
         # handleNotification() was called
         continue

@@ -1174,11 +1174,11 @@ BLE_CONFIG_START
                                                 </BleProperty>
                                             </Properties>
                                             <Permission>
-                                                <Property id="AccessPermissionRead" value="true"/>
+                                                <Property id="AccessPermissionRead" value="false"/>
                                                 <Property id="EncryptionPermissionRead" value="NoEncryptionRequired"/>
                                                 <Property id="AuthenticationPermissionRead" value="NoAuthenticationRequired"/>
                                                 <Property id="AuthorizationPermissionRead" value="NoAuthorizationRequired"/>
-                                                <Property id="AccessPermissionWrite" value="true"/>
+                                                <Property id="AccessPermissionWrite" value="false"/>
                                                 <Property id="EncryptionPermissionWrite" value="NoEncryptionRequired"/>
                                                 <Property id="AuthenticationPermissionWrite" value="NoAuthenticationRequired"/>
                                                 <Property id="AuthorizationPermissionWrite" value="NoAuthorizationRequired"/>

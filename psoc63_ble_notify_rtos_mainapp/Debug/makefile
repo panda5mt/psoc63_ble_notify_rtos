@@ -41,7 +41,7 @@ endif
 all: psoc63_ble_notify_rtos_mainapp.elf secondary-outputs
 
 dependents:
-	-cd /Users/atsu/psoc63_ble_notify_rtos/psoc6pdl_Cortex-M4/Debug && $(MAKE) all
+	-cd /Users/atsu/psoc63_ble_notify_rtos/psoc6pdl_Cortex-M4/Debug && $(MAKE) clean all
 
 # Tool invocations
 psoc63_ble_notify_rtos_mainapp.elf: $(OBJS) $(USER_OBJS) /Users/atsu/psoc63_ble_notify_rtos/psoc6pdl_Cortex-M4/Debug/libpsoc6pdl_Cortex-M4.a

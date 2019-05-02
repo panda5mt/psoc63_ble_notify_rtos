@@ -240,7 +240,7 @@
         { 0x000Eu, 0x2800u /* Primary service                     */, 0x00000001u /*       */, 0x0011u, {{0xBBBBu, NULL}}                           },
         { 0x000Fu, 0x2803u /* Characteristic                      */, 0x00100001u /* ntf   */, 0x0011u, {{0xCCCCu, NULL}}                           },
         { 0x0010u, 0xCCCCu /* Custom Characteristic               */, 0x01100000u /* ntf   */, 0x0011u, {{0x0000u, (void *)&cy_ble_attValuesLen[6]}} },
-        { 0x0011u, 0x2902u /* Client Characteristic Configuration */, 0x030A0101u /* rd,wr */, 0x0011u, {{0x0002u, (void *)&cy_ble_attValuesLen[7]}} },
+        { 0x0011u, 0x2902u /* Client Characteristic Configuration */, 0x030A0000u /* rd,wr */, 0x0011u, {{0x0002u, (void *)&cy_ble_attValuesLen[7]}} },
         { 0x0012u, 0x2800u /* Primary service                     */, 0x00000001u /*       */, 0x0018u, {{0x180Au, NULL}}                           },
         { 0x0013u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd    */, 0x0014u, {{0x2A23u, NULL}}                           },
         { 0x0014u, 0x2A23u /* System ID                           */, 0x01020001u /* rd    */, 0x0014u, {{0x0008u, (void *)&cy_ble_attValuesLen[8]}} },
