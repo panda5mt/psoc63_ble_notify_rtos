@@ -3,6 +3,7 @@
 import sys
 import time
 from bluepy.btle import *
+
 class ControlCy63ble:
   def __init__(self, mac):
     self._data = {}
@@ -33,15 +34,16 @@ class ControlCy63ble:
       self.p.disconnect()
   def monitorCy63ble(self):
     try:
-      # Enable notification
-      self._enableNotification()
-      # Wait for notifications
-      print('Waiting for button pushed 180 second\n')
-      while self.p.waitForNotifications(180.0):
-        # handleNotification() was called
-        continue
-      print('Notification timeout')
-      self._disableNotification()
+      while True:
+        # Enable notification
+        self._enableNotification()
+        # Wait for notifications
+        print('Waiting for button pushed 180 second\n')
+        while self.p.waitForNotifications(180.0):
+          # handleNotification() was called
+          continue
+        print('Notification timeout')
+        self._disableNotification()
     except:
       return None
   def disconnect(self):
@@ -58,6 +60,7 @@ class NotificationDelegate(DefaultDelegate):
       except BTLEException as err:
         print(err)
         self.p.disconnect()
+
 # main program
 if __name__== '__main__':
   print("Cy63blenotify start")
