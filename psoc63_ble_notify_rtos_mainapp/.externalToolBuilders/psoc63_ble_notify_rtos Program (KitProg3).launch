@@ -18,6 +18,7 @@
 <intAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerGdbPortNumber" value="3333"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerLog" value=""/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerOther" value="-s &quot;${cy_tools_path:openocd}/scripts&quot;&#13;&#10;-s &quot;${workspace_loc}/psoc63_ble_notify_rtos_config/GeneratedSource&quot;&#13;&#10;-c &quot;source [find interface/kitprog3.cfg]&quot;&#13;&#10;-c &quot;source [find target/psoc6.cfg]&quot;&#13;&#10;-c &quot;if [catch {program {${workspace_loc:/psoc63_ble_notify_rtos_mainapp/${config_name:psoc63_ble_notify_rtos_mainapp}/psoc63_ble_notify_rtos_mainapp_final.elf}}} ] { echo {** Program operation failed **} } else { echo {** Program operation completed successfully **} }&quot;&#13;&#10;-c &quot;reset_config srst_only;reset run;psoc6.dap dpreg 0x04 0x00;shutdown&quot;"/>
+<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerTclPortNumber" value="6666"/>
 <intAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerTelnetPortNumber" value="4444"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherInitCommands" value=""/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherRunCommands" value=""/>
@@ -49,6 +50,7 @@
 <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="${config_name:psoc63_ble_notify_rtos_mainapp}/psoc63_ble_notify_rtos_mainapp_final.elf"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="psoc63_ble_notify_rtos_mainapp"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value=""/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/psoc63_ble_notify_rtos_mainapp"/>
 </listAttribute>
