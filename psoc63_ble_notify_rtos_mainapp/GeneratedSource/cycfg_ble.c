@@ -52,16 +52,6 @@
             .slowAdvIntervalMax = 0x4000u, 
             .slowAdvTimeOut = 0x96u, 
         },
-        /* Peripheral configuration 1 */
-        {
-            .fastAdvIntervalMin = 0x0020u, 
-            .fastAdvIntervalMax = 0x0030u, 
-            .fastAdvTimeOut = 0x1Eu, 
-            .slowAdvEnable = 0x01u, 
-            .slowAdvIntervalMin = 0x0640u, 
-            .slowAdvIntervalMax = 0x4000u, 
-            .slowAdvTimeOut = 0x96u, 
-        },
     };
 
     /* Advertising parameters */
@@ -69,17 +59,6 @@
                                                        CY_BLE_GAP_BROADCASTER_COUNT] =
     {
         /* Peripheral configuration 0 */
-        {
-            .advIntvMin = 0x0020u, 
-            .advIntvMax = 0x0030u, 
-            .advType = CY_BLE_GAPP_CONNECTABLE_UNDIRECTED_ADV, 
-            .ownAddrType = 0x00u, 
-            .directAddrType = 0x00u, 
-            .directAddr = {0x00u, 0x00u, 0x00u, 0x50u, 0xA0u, 0x00u}, 
-            .advChannelMap = 0x07u, 
-            .advFilterPolicy = 0x00u, 
-        },
-        /* Peripheral configuration 1 */
         {
             .advIntvMin = 0x0020u, 
             .advIntvMax = 0x0030u, 
@@ -100,21 +79,11 @@
         {
             .advData = { 0x02u, 0x01u, 0x06u, 0x08u, 0x09u, 0x70u,
                 0x36u, 0x78u, 0x62u, 0x6Cu, 0x65u, 0x32u,
-                0x05u, 0x02u, 0xBBu, 0xBBu, 0x0Au, 0x18u,
+                0x03u, 0x02u, 0xEEu, 0xEEu, 0x00u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u }, 
-            .advDataLen = 0x12u, 
-        },
-        /* Peripheral configuration 1 */
-        {
-            .advData = { 0x02u, 0x01u, 0x05u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-                0x00u }, 
-            .advDataLen = 0x03u, 
+            .advDataLen = 0x10u, 
         },
     };
 
@@ -123,16 +92,6 @@
                                                        CY_BLE_GAP_BROADCASTER_COUNT] =
     {
         /* Peripheral configuration 0 */
-        {
-            .scanRspData = { 0x08u, 0x09u, 0x70u, 0x36u, 0x78u, 0x62u,
-                0x6Cu, 0x65u, 0x32u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-                0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-                0x00u }, 
-            .scanRspDataLen = 0x09u, 
-        },
-        /* Peripheral configuration 1 */
         {
             .scanRspData = { 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
                 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
@@ -161,14 +120,6 @@
             .advData = &cy_ble_discoveryData[0], 
             .scanRspData = &cy_ble_scanRspData[0], 
             .advTo = 0x00u, 
-        },
-        /* Peripheral configuration 1 */
-        {
-            .discMode = 0x01u, 
-            .advParam = &cy_ble_discoveryParam[1], 
-            .advData = &cy_ble_discoveryData[1], 
-            .scanRspData = &cy_ble_scanRspData[1], 
-            .advTo = 0x1Eu, 
         },
     };
 #endif /* (CY_BLE_GAP_ROLE_PERIPHERAL || CY_BLE_GAP_ROLE_BROADCASTER) */
@@ -221,7 +172,7 @@
         (uint8_t)'p', (uint8_t)'6', (uint8_t)'x', (uint8_t)'b', (uint8_t)'l', (uint8_t)'e', (uint8_t)'2',
 
         /* Appearance */
-        0xC0u, 0x00u,
+        0x00u, 0x00u,
 
         /* Service Changed */
         0x00u, 0x00u, 0x00u, 0x00u,
@@ -297,6 +248,7 @@
         { 0x0016u, 0x2A25u /* Serial Number String                */, 0x01020001u /* rd    */, 0x0016u, {{0x0000u, (void *)&cy_ble_attValuesLen[9]}} },
         { 0x0017u, 0x2803u /* Characteristic                      */, 0x00020001u /* rd    */, 0x0018u, {{0x2A29u, NULL}}                           },
         { 0x0018u, 0x2A29u /* Manufacturer Name String            */, 0x01020001u /* rd    */, 0x0018u, {{0x0000u, (void *)&cy_ble_attValuesLen[10]}} },
+        { 0x0019u, 0x2800u /* Primary service                     */, 0x00000001u /*       */, 0x0019u, {{0xEEEEu, NULL}}                           },
     };
 #endif /* (CY_BLE_GATT_ROLE_SERVER) */
 
@@ -307,7 +259,7 @@
 
 static const cy_stc_ble_params_t cy_ble_params = {
     /** Silicon Device Address Enabled */
-    .siliconDeviceAddressEn = 0x00u,
+    .siliconDeviceAddressEn = 0x01u,
 
     /** Using external buffer for Prepare Write Request */
     .gattPrepareWriteExtBuffEn = CY_BLE_GATT_EN_EXT_PREP_WRITE_BUFF,
@@ -1152,6 +1104,11 @@ const cy_stc_ble_config_t cy_ble_config =
         {
             .customServHandle = 0x000Eu, /* Handle of the Custom Notification service */ 
             .customServInfo = &cy_ble_customSChar[1], /* Pointer to characteristics array */ 
+        },
+        /* Advertizement UUID service */
+        {
+            .customServHandle = 0x0019u, /* Handle of the Advertizement UUID service */ 
+            .customServInfo = NULL, /* Pointer to characteristics array */ 
         },
     };
 
