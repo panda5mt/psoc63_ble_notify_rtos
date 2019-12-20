@@ -14,4 +14,4 @@
 
 void freqCountTask(void* pvParameters);
 
-#endif FREQ_COUNT_TASK_H
+#endif //FREQ_COUNT_TASK_H
